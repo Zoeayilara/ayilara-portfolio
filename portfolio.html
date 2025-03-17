@@ -1,1 +1,379 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayilara Zoe - Portfolio</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #ff7e5f;
+            --secondary: #1e3c72;
+            --text: #ffffff;
+            --text-muted: #dddddd;
+            --bg-gradient: linear-gradient(135deg, #1e3c72, #2a5298);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background: var(--bg-gradient);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 60, 114, 0.95);
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 4rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 20px rgba(255, 126, 95, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            padding: 1.5rem;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-card li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .project-card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .project-card li a{
+            /* text-decoration: none; */
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h3>AZ</h3>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero" id="about" data-aos="fade-up">
+            <div class="hero-content">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">AYILARA ZOE</h1>
+                <p style="font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem;">Computer Scientist</p>
+                <p>A highly motivated Computer Science student at Bowen University with a passion for innovative technology and problem-solving. Experienced in web development, AI, and database management.</p>
+                <div class="social-links">
+                    <a href="https://github.com/Zoeayilara" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:zoeayilara@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+2349152278109"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.postimg.cc/wxfTDQ9Q/Whats-App-Image-2025-03-16-at-19-20-26-3f185ec2.jpg" alt="Ayilara Zoe" class="profile-img">
+            </div>
+        </section>
+
+        <section id="skills" class="section" data-aos="fade-up">
+            <h2>SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <p>Python, JavaScript, HTML, CSS</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <p>FastAPI, Django</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-database"></i> Database</h3>
+                    <p>SQLite, PostgreSQL, MySQL</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-brain"></i> AI & ML</h3>
+                    <p>Data analysis, Model training</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section" data-aos="fade-up">
+            <h2>PROJECTS</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>AI-Powered Energy Management System</h3>
+                    <ul>
+                        <li>Developed AI-driven system for commercial building energy optimization</li>
+                        <li>Built backend APIs using FastAPI with SQLite integration</li>
+                        <li>Implemented real-time monitoring dashboard with Bootstrap</li>
+                        <li>Trained AI models for improved energy predictions</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3>Team Management Task Tracker</h3>
+                    <ul>
+                        <li>Created web-based task management system</li>
+                        <li>Developed Django backend with real-time updates</li>
+                        <li>Enhanced UI using Bootstrap framework</li>
+                        <li>Implemented robust authentication system</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3>Credit Card Fraud Detection System</h3>
+                    <ul>
+                        <li>Built ML model for fraudulent transaction detection</li>
+                        <li>Utilized Python and scikit-learn for model training</li>
+                        <li>Implemented advanced data preprocessing</li>
+                        <li>Enhanced prediction accuracy through feature engineering</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3>Contact Management System</h3>
+                    <ul>
+                        <li>Designed GUI application using Tkinter</li>
+                        <li>Implemented CRUD operations with SQLite</li>
+                        <li>Created clean, interactive user interface</li>
+                        <li>Enhanced user experience with intuitive design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section" data-aos="fade-up">
+            <h2>WORK EXPERIENCE</h2>
+            <div class="project-card">
+                <h3>IT Support Intern - Bowen University</h3>
+                <ul>
+                    <li>Resolved technical issues for students and faculty</li>
+                    <li>Maintained computer systems for lectures</li>
+                    <li>Developed student records management system</li>
+                    <li>Improved lab efficiency by 20%</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="section" data-aos="fade-up">
+            <h2>CONTACT</h2>
+            <div class="project-card">
+                <ul>
+                    <li>📍 Ojoyeye Street, Olodo, Ibadan, Nigeria</li>
+                    <li>📞 +234 915 227 8109</li>
+                    <li>✉️ zoeayilara@gmail.com</li>
+                    <li> <a href="https://github.com/Zoeayilara"> 💼 GitHub: Zoeayilara </a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
